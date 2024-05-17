@@ -9,7 +9,6 @@ MENU
 ---------------------
 """
 
-#usuarios = cadastrar_usuario()]
 
 
 def verificar_extrato(saldo,/,*,extrato):
@@ -19,32 +18,33 @@ def verificar_extrato(saldo,/,*,extrato):
   print("-------------------------------")
 
 def depositar(saldo, extrato,valor,/):
-  valor=float(input("Informe o valor do depósito: "))
-  if valor <= 0:
-    print("Valor inválido")
-    return
-  saldo+=valor
-  extrato+=f"Depósito: R$ {valor:.2f}\n"
-  print("Depósito realizado com sucesso!")
-  return saldo, extrato
+    valor=float(input("Informe o valor do depósito: "))
+    if valor <= 0:
+        print("Valor inválido")
+        
+    else:
+        saldo+=valor
+        extrato+=f"Depósito: R$ {valor:.2f}\n"
+        print("Depósito realizado com sucesso!")
+    return saldo, extrato
 
 def sacar(*,saldo, valor, extrato, numero_saques, limite, LIMITE_SAQUES):
-  valor=float(input("Informe o valor do saque: "))
-  if valor <= 0:
-    print("Valor inválido")
-  elif valor > saldo:
-    print("Saldo insuficiente")
-  elif numero_saques >= LIMITE_SAQUES:
-    print("Número máximo de saques atingido")
-  elif valor > limite:
-    print("Limite diário de saque atingido")
-  else:
-    saldo-=valor
-    extrato+=f"Saque: R$ {valor:.2f}\n"
-    numero_saques+=1
-    print("Saque realizado com sucesso!")
+    valor=float(input("Informe o valor do saque: "))
+    if valor <= 0:
+        print("Valor inválido")
+    elif valor > saldo:
+        print("Saldo insuficiente")
+    elif numero_saques >= LIMITE_SAQUES:
+        print("Número máximo de saques diários atingido")
+    elif valor > limite:
+        print("Limite de saque atingido")
+    else:
+        saldo-=valor
+        extrato+=f"Saque: R$ {valor:.2f}\n"
+        numero_saques+=1
+        print("Saque realizado com sucesso!")
 
-  return saldo, extrato, numero_saques
+    return saldo, extrato, numero_saques
 
 def cadastrar_usuario(usuarios):
   cpf = input("Informe o seu CPF(Somente números): ")
